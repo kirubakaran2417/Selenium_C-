@@ -1,18 +1,18 @@
 using OpenQA.Selenium;
 using OpenQA.Selenium.Chrome;
+using OpenQA.Selenium.Interactions;
 using OpenQA.Selenium.Support.UI;
 using System.Collections;
 
 namespace TestProject1
 {
     [TestClass]
-    public class dropdowns
+    public class ActionsDemo
     {
-        String test_url = "https://www.mycontactform.com/samples.php";
-        String expTitle = "Free Contact and Email Forms - myContactForm.com";
+        String test_url = "https://demo.automationtesting.in/Alerts.html";
         IWebDriver driver;
 
-        public dropdowns()
+        public ActionsDemo()
         {
             driver = new ChromeDriver();
         }
@@ -24,19 +24,20 @@ namespace TestProject1
             
             driver.Navigate().GoToUrl(test_url);
             driver.Manage().Window.Maximize();
+            driver.FindElement(By.XPath("//a[@href='#CancelTab']")).Click();
+            driver.FindElement(By.XPath("//div[@id='CancelTab']//button")).Click();
 
-            IWebElement element = driver.FindElement(By.Id("q3"));
-            SelectElement select = new SelectElement(element);
-            select.SelectByText("Second Option");
+            IAlert al = driver.SwitchTo().Alert();
 
-            IWebElement check = driver.FindElement(By.XPath("//input[@value=\"Second Check Box\"]"));
-            check.Click();
-
-            IWebElement attach = driver.FindElement(By.Name("attach4589"));
-            attach.SendKeys("C:\\Users\\k.kirubakaran\\Desktop\\test1.txt");
+            al.Accept();
+            //al.Dismiss();
+            //al.SendKeys("test");
+       
 
 
-            
+
+
+
 
 
         }
