@@ -1,0 +1,21 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<users>
+	<!--Root element-->
+	<user>
+		<!--child element-->
+		<fName>Mahendra</fName>
+		<!--Text field and text data-->
+		<lName>Singh Dhoni</lName>
+		<enrollmentDate>02/03/203</enrollmentDate>
+	</user>
+	<user>
+		<fName>virat</fName>
+		<lName>kholi</lName>
+		<enrollmentDate>02/03/203</enrollmentDate>
+	</user>
+	<user>
+		<fName>Dinesh</fName>
+		<lName>Karthik</lName>
+		<enrollmentDate>02/03/203</enrollmentDate>
+	</user>
+</users>
