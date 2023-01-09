@@ -30,28 +30,36 @@ namespace TestProject1
             driver.FindElement(By.XPath("//div[@class='c-input-cntr']//input[@placeholder='Depart']")).Click();
             
             //Explicit wait
-            WebDriverWait wait=new WebDriverWait(driver,TimeSpan.FromSeconds(15));
-            IWebElement Searchresult = wait.Until(SeleniumExtras.WaitHelpers.ExpectedConditions
-                .ElementToBeClickable(By.XPath("")));
+            //WebDriverWait wait=new WebDriverWait(driver,TimeSpan.FromSeconds(15));
+            //IWebElement Searchresult = wait.Until(SeleniumExtras.WaitHelpers.ExpectedConditions
+              //  .ElementToBeClickable(By.XPath("")));
 
             //fluent wait
-            DefaultWait<IWebDriver> fluentwait = new DefaultWait<IWebDriver>(driver);
-            fluentwait.Timeout=TimeSpan.FromSeconds(15);
+            //DefaultWait<IWebDriver> fluentwait = new DefaultWait<IWebDriver>(driver);
+            //fluentwait.Timeout=TimeSpan.FromSeconds(15);
 
-            fluentwait.PollingInterval = TimeSpan.FromMilliseconds(5000);
-            fluentwait.IgnoreExceptionTypes(typeof(NoSuchElementException));
-            fluentwait.Message = "Element to be searched not found";
+            //fluentwait.PollingInterval = TimeSpan.FromMilliseconds(5000);
+            //fluentwait.IgnoreExceptionTypes(typeof(NoSuchElementException));
+            //fluentwait.Message = "Element to be searched not found";
             while (true)
             {
                 String monthtext = driver.FindElement(By.XPath("(//div[@class='rd-month-label'])[1]")).Text;
                 String[] sep = monthtext.Split(" ");
-                if (sep[0].Equals("April"))
+                if (sep[0].Equals("June"))
                     break;
                 else
                     driver.FindElement(By.XPath("//button[@class=\"ixi-icon-arrow rd-next\"]")).Click();
             }
 
-
+            List<IWebElement> dates = driver.FindElements(By.XPath("(//table[@class=\"rd-days\"])[1]//td[contains(@class,'rd-day-body')]//div[@class='day has-info']")).ToList();
+            for(int i = 0; i < dates.Count; i++)
+            {
+                if (dates[i].Text.Equals("10"))
+                {
+                    dates[i].Click();
+                    break;
+                }
+            }
 
 
 
